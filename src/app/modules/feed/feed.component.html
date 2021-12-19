@@ -1,0 +1,24 @@
+<div>
+  <nav class="m-b-20">
+    Amount displayed:
+    <div class="flex m-b-20">
+      <button (click)="getNumberOfPosts(5)" [disabled]="isFetching">5</button>
+      <button (click)="getNumberOfPosts(10)" [disabled]="isFetching">10</button>
+      <button (click)="getNumberOfPosts(25)" [disabled]="isFetching">25</button>
+    </div>
+
+    Navigate:
+    <div>
+      <button (click)="getPreviousPosts()" class="nav-button prev inline-block" [disabled]="isFetching">&lt;&lt; Previous posts</button>
+      <button (click)="getNextPosts()" class="nav-button next inline-block" [disabled]="isFetching">Next posts &gt;&gt;</button>
+    </div>
+  </nav>
+
+  <section>
+    <div *ngIf="isFetching">Loading posts...</div>
+
+    <ng-container *ngIf="!isFetching">
+      <app-post *ngFor="let post of feedPosts" [postData]="post"></app-post>
+    </ng-container>
+  </section>
+</div>

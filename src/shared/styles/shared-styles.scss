@@ -1,0 +1,42 @@
+body {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.block {
+  display: block;
+}
+
+.inline-block {
+  display: inline-block;
+}
+
+.flex {
+  display: flex;
+}
+
+.container {
+  padding: 0 40px;
+  margin: 0 auto;
+}
+
+button {
+  line-height: 1.75rem;
+  padding: 0 15px;
+  cursor: pointer;
+}
+
+// Margin and padding classes loop
+$margins: (0, 5, 10, 15, 20, 25, 30, 35, 40);
+$sides: (top, bottom, left, right);
+
+@each $space in $margins {
+  @each $side in $sides {
+    .m-#{str-slice($side, 0, 1)}-#{$space} {
+      margin-#{$side}: #{$space}px !important;
+    }
+
+    .p-#{str-slice($side, 0, 1)}-#{$space} {
+      padding-#{$side}: #{$space}px !important;
+    }
+  }
+}

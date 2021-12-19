@@ -1,0 +1,20 @@
+<article class="feed-post m-b-20">
+  <header>
+    <h2 class="m-t-0">{{postData.title}}</h2>
+
+    <div class="m-b-10">
+        <address>By {{ postData.author }}</address> on
+        <time pubdate [dateTime]="postData.created | date:'shortDate'" [title]="postData.created | date:'medium'">{{
+          postData.created | date:'medium'
+        }}</time>
+    </div>
+  </header>
+
+  <div>
+    <div class="m-b-10">
+      <img *ngIf="postData.thumbnail !== 'self'" [src]="postData.thumbnail" alt="thumbnail">
+    </div>
+
+    <a (click)="goToPostDetails($event)" href="#">See details</a>
+  </div>
+</article>
